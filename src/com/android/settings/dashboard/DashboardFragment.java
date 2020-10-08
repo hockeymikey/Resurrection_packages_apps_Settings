@@ -255,6 +255,13 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
         }
         addPreferencesFromResource(resId);
         final PreferenceScreen screen = getPreferenceScreen();
+        displayResourceTilesToScreen(screen);
+    }
+    /**
+     * Perform {@link AbstractPreferenceController#displayPreference(PreferenceScreen)}
+     * on all {@link AbstractPreferenceController}s.
+     */
+    protected void displayResourceTilesToScreen(PreferenceScreen screen) {
         Collection<AbstractPreferenceController> controllers = mPreferenceControllers.values();
         for (AbstractPreferenceController controller : controllers) {
             controller.displayPreference(screen);
