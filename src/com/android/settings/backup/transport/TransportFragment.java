@@ -16,7 +16,7 @@
 
 package com.android.settings.backup.transport;
 
-import android.app.settings.SettingsEnums;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import android.content.Context;
 import com.android.settings.R;
 import com.android.settings.backup.transport.TransportPreferenceController.OnTransportChangedListener;
@@ -58,7 +58,7 @@ public class TransportFragment extends DashboardFragment implements OnTransportC
 
     @Override
     public int getMetricsCategory() {
-        return SettingsEnums.BACKUP_SETTINGS;
+        return MetricsEvent.BACKUP_SETTINGS;
     }
 
     @Override

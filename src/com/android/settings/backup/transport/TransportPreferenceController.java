@@ -17,8 +17,8 @@
 package com.android.settings.backup.transport;
 
 import android.content.Context;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceScreen;
+import android.support.v7.preference.Preference
+import android.support.v7.preference.PreferenceScreen;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 public class TransportPreferenceController extends AbstractPreferenceController {
