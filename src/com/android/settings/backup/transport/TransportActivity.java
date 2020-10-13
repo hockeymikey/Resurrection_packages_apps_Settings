@@ -18,7 +18,6 @@ package com.android.settings.backup.transport;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import com.android.settings.backup.transport.TransportFragment;
 
 /**
  * Activity to allow the user to choose the {@link android.app.backup.BackupTransport}.

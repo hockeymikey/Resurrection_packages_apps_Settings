@@ -50,7 +50,7 @@ public class TransportFragment extends DashboardFragment implements OnTransportC
      * Get a list of {@link AbstractPreferenceController} for this fragment.
      */
     @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+    protected List<AbstractPreferenceController> getPreferenceControllers(Context context) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new TransportPreferenceController(context, this));
         return controllers;

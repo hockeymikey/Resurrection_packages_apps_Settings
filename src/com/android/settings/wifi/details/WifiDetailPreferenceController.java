@@ -98,6 +98,8 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
     @VisibleForTesting
     static final String KEY_SECURITY_PREF = "security";
     @VisibleForTesting
+    static final String KEY_PASSWORD_PREF = "password";
+    @VisibleForTesting
     static final String KEY_MAC_ADDRESS_PREF = "mac_address";
     @VisibleForTesting
     static final String KEY_IP_ADDRESS_PREF = "ip_address";
@@ -137,6 +139,7 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
     private WifiDetailPreference mLinkSpeedPref;
     private WifiDetailPreference mFrequencyPref;
     private WifiDetailPreference mSecurityPref;
+    private WifiDetailPreference mPasswordPref;
     private WifiDetailPreference mMacAddressPref;
     private WifiDetailPreference mIpAddressPref;
     private WifiDetailPreference mGatewayPref;
@@ -255,6 +258,7 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
         mLinkSpeedPref = (WifiDetailPreference) screen.findPreference(KEY_LINK_SPEED);
         mFrequencyPref = (WifiDetailPreference) screen.findPreference(KEY_FREQUENCY_PREF);
         mSecurityPref = (WifiDetailPreference) screen.findPreference(KEY_SECURITY_PREF);
+        mPasswordPref = (WifiDetailPreference) screen.findPreference(KEY_PASSWORD_PREF);
 
         mMacAddressPref = (WifiDetailPreference) screen.findPreference(KEY_MAC_ADDRESS_PREF);
         mIpAddressPref = (WifiDetailPreference) screen.findPreference(KEY_IP_ADDRESS_PREF);
@@ -263,9 +267,18 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
         mDnsPref = (WifiDetailPreference) screen.findPreference(KEY_DNS_PREF);
 
         mIpv6Category = (PreferenceCategory) screen.findPreference(KEY_IPV6_CATEGORY);
-        mIpv6AddressPref = screen.findPreference(KEY_IPV6_ADDRESSES_PREF);
 
         mSecurityPref.setDetailText(mAccessPoint.getSecurityString(false /* concise */));
+
+        int securityV = mAccessPoint.getSecurity();
+
+        if (securityV != 1 && securityV != 2) {
+            // not WEP/PSK?
+            mPasswordPref.setVisible(false);
+        } else {
+            mPasswordPref.setDetailText(mWifiManager.getWifiPassword(mWifiConfig.networkId));
+        }
+
         mForgetButton = mButtonsPref.findViewById(R.id.forget_button);
         mForgetButton.setOnClickListener(view -> forgetNetwork());
     }

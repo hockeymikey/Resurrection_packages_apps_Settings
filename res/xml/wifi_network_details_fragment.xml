@@ -47,6 +47,11 @@
                 android:icon="@drawable/ic_security_lock_24dp"
                 android:title="@string/wifi_security"
                 android:selectable="false"/>
+        <com.android.settings.wifi.WifiDetailPreference
+            android:key="password"
+            android:icon="@drawable/ic_security_lock_24dp"
+            android:title="@string/wifi_security"
+            android:selectable="false"/>
     </PreferenceCategory>
 
     <!-- Network Details -->
